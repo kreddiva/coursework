@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <title>Human Computer Interaction(HCI)</title>
+  <link rel="stylesheet" type="text/css" media="all" href="css/styles.css">
+  <link rel="stylesheet" href="lib/jquery.ntm/themes/default/css/theme.css" />
+  <link rel="stylesheet" href="css/github.css" type="text/css" />
+  <link rel="stylesheet" href="css/demo.css" type="text/css" />
+  <link rel="stylesheet" href="css/orgchart.css" type="text/css" />
+  <link rel="stylesheet" href="css/example.css">
+ 
+  <!-- JS -->
+	
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/highlight.pack.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/jquery.collapsible.js"></script>
+	<script type="text/javascript" src="lib/jquery.ntm/js/jquery.ntm.js"></script> 
+ <script type='text/javascript' src='https://www.google.com/jsapi'></script>  
+  
+   <script type='text/javascript'>  
+    google.load('visualization', '1', {packages:['orgchart']});  
+    google.setOnLoadCallback(drawChart);  
+    function drawChart() {  
+     var data = new google.visualization.DataTable();  
+     data.addColumn('string', 'Node');  
+     data.addColumn('string', 'Parent');  
+	  
+     data.addRows([ 
+      ['0', ''],	 
+      ['1', '0'], 
+	 ['2', '0'], 
+	 ['3', '0'], 
+	 
+      ['1.1', '1'],  
+      ['1.2', '1'],
+      ['1.3', '1'],	  
+      ['2.1', '2'],  
+      ['2.2', '2'],  
+     
+      ['3.1', '3'],  
+      ['3.2', '3'],  
+      ['3.3', '3']  
+      
+     ]);  
+     var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));  
+     chart.draw(data);  
+    }  
+   </script>  	
+
+	<script type="text/javascript">
+    $(document).ready(function() {
+           $('.demo').ntm();
+        //syntax highlighter
+        hljs.tabReplace = '    ';
+        hljs.initHighlightingOnLoad();
+
+        $.fn.slideFadeToggle = function(speed, easing, callback) {
+            return this.animate({opacity: 'toggle', height: 'toggle'}, speed, easing, callback);
+        };
+
+        $('.page_collapsible').collapsible({
+            defaultOpen: 'body_section1',
+            cookieName: 'body2',
+            speed: 'slow',
+            animateOpen: function (elem, opts) { //replace the standard slideUp with custom function
+                elem.next().slideFadeToggle(opts.speed);
+            },
+            animateClose: function (elem, opts) { //replace the standard slideDown with custom function
+                elem.next().slideFadeToggle(opts.speed);
+            },
+            loadOpen: function (elem) { //replace the standard open state with custom function
+                elem.next().show();
+            },
+            loadClose: function (elem, opts) { //replace the close state with custom function
+                elem.next().hide();
+            }
+
+        });
+//image slider
+	var slideCount = $('#slider ul li').length;
+	var slideWidth = $('#slider ul li').width();
+	var slideHeight = $('#slider ul li').height();
+	var sliderUlWidth = slideCount * slideWidth;
+	
+	$('#slider').css({ width: slideWidth, height: slideHeight });
+	
+	$('#slider ul').css({ width: sliderUlWidth, marginLeft: - slideWidth });
+	
+    $('#slider ul li:last-child').prependTo('#slider ul');
+
+    function moveLeft() {
+        $('#slider ul').animate({
+            left: + slideWidth
+        }, 200, function () {
+            $('#slider ul li:last-child').prependTo('#slider ul');
+            $('#slider ul').css('left', '');
+        });
+    };
+
+    function moveRight() {
+        $('#slider ul').animate({
+            left: - slideWidth
+        }, 200, function () {
+            $('#slider ul li:first-child').appendTo('#slider ul');
+            $('#slider ul').css('left', '');
+        });
+    };
+	
+	
+
+    $('a.control_prev').click(function () {
+        moveLeft();
+    });
+
+    $('a.control_next').click(function () {
+        moveRight();
+    });
+	
+	//slider1
+	var slideCount = $('#slider1 ul li').length;
+	var slideWidth = $('#slider1 ul li').width();
+	var slideHeight = $('#slider1 ul li').height();
+	var slider1UlWidth = slideCount * slideWidth;
+	
+	$('#slider1').css({ width: slideWidth, height: slideHeight });
+	
+	$('#slider1 ul').css({ width: slider1UlWidth, marginLeft: - slideWidth });
+	
+    $('#slider1 ul li:last-child').prependTo('#slider1 ul');
+
+    function moveLeft1() {
+        $('#slider1 ul').animate({
+            left: + slideWidth
+        }, 200, function () {
+            $('#slider1 ul li:last-child').prependTo('#slider1 ul');
+            $('#slider1 ul').css('left', '');
+        });
+    };
+
+    function moveRight1() {
+        $('#slider1 ul').animate({
+            left: - slideWidth
+        }, 200, function () {
+            $('#slider1 ul li:first-child').appendTo('#slider1 ul');
+            $('#slider1 ul').css('left', '');
+        });
+    };
+
+    $('a.control_prev1').click(function () {
+        moveLeft1();
+    });
+
+    $('a.control_next1').click(function () {
+        moveRight1();
+    });
+	//slider2
+	var slideCount = $('#slider2 ul li').length;
+	var slideWidth = $('#slider2 ul li').width();
+	var slideHeight = $('#slider2 ul li').height();
+	var slider1UlWidth = slideCount * slideWidth;
+	
+	$('#slider2').css({ width: slideWidth, height: slideHeight });
+	
+	$('#slider2 ul').css({ width: slider1UlWidth, marginLeft: - slideWidth });
+	
+    $('#slider2 ul li:last-child').prependTo('#slider2 ul');
+
+    function moveLeft2() {
+        $('#slider2 ul').animate({
+            left: + slideWidth
+        }, 200, function () {
+            $('#slider2 ul li:last-child').prependTo('#slider2 ul');
+            $('#slider2 ul').css('left', '');
+        });
+    };
+
+    function moveRight2() {
+        $('#slider2 ul').animate({
+            left: - slideWidth
+        }, 200, function () {
+            $('#slider2 ul li:first-child').appendTo('#slider2 ul');
+            $('#slider2 ul').css('left', '');
+        });
+    };
+
+    $('a.control_prev2').click(function () {
+        moveLeft2();
+    });
+
+    $('a.control_next2').click(function () {
+        moveRight2();
+    });
+    });
+</script>
+<style>
+
+
+a.control_prev {
+  border-radius: 0 2px 2px 0;
+}
+
+a.control_next {
+  right: 0;
+  border-radius: 2px 0 0 2px;
+}
+
+#slider {
+  position: relative;
+  overflow: hidden;
+  margin: 20px auto 0 auto;
+  border-radius: 4px;
+}
+
+#slider ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 200px;
+  list-style: none;
+}
+
+#slider ul li {
+  position: relative;
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 800px;
+  height: 400px;
+ 
+  text-align: center;
+  line-height: 300px;
+}
+a.control_prev, a.control_next {
+  position: absolute;
+  top: 40%;
+  z-index: 999;
+  display: block;
+  padding: 4% 3%;
+  width: auto;
+  height: auto;
+  background: #2a2a2a;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  opacity: 0.8;
+  cursor: pointer;
+}
+.slider_option {
+  position: relative;
+  margin: 10px auto;
+  width: 160px;
+  font-size: 18px;
+}
+a.control_prev:hover, a.control_next:hover {
+  opacity: 1;
+  -webkit-transition: all 0.2s ease;
+}
+/*slider1*/
+
+#slider1 {
+  position: relative;
+  overflow: hidden;
+  margin: 20px auto 0 auto;
+  border-radius: 4px;
+}
+
+#slider1 ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 200px;
+  list-style: none;
+}
+
+#slider1 ul li {
+  position: relative;
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 800px;
+  height: 400px;
+ 
+  text-align: center;
+  line-height: 300px;
+}
+
+
+
+
+a.control_prev1, a.control_next1{
+  position: absolute;
+  top: 40%;
+  z-index: 999;
+  display: block;
+  padding: 4% 3%;
+  width: auto;
+  height: auto;
+  background: #2a2a2a;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+a.control_prev1:hover, a.control_next1:hover {
+  opacity: 1;
+  -webkit-transition: all 0.2s ease;
+}
+
+a.control_prev1 {
+  border-radius: 0 2px 2px 0;
+}
+
+a.control_next1 {
+  right: 0;
+  border-radius: 2px 0 0 2px;
+}
+
+
+.slider_option1 {
+  position: relative;
+  margin: 10px auto;
+  width: 160px;
+  font-size: 18px;
+}
+/*slider2*/
+
+#slider2 {
+  position: relative;
+  overflow: hidden;
+  margin: 20px auto 0 auto;
+  border-radius: 4px;
+}
+
+#slider2 ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 200px;
+  list-style: none;
+}
+
+#slider2 ul li {
+  position: relative;
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 800px;
+  height: 400px;
+ 
+  text-align: center;
+  line-height: 300px;
+}
+a.control_prev2, a.control_next2{
+  position: absolute;
+  top: 40%;
+  z-index: 999;
+  display: block;
+  padding: 4% 3%;
+  width: auto;
+  height: auto;
+  background: #2a2a2a;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+a.control_prev2:hover, a.control_next2:hover {
+  opacity: 1;
+  -webkit-transition: all 0.2s ease;
+}
+
+a.control_prev2 {
+  border-radius: 0 2px 2px 0;
+}
+
+a.control_next2 {
+  right: 0;
+  border-radius: 2px 0 0 2px;
+}
+
+
+.slider_option2 {
+  position: relative;
+  margin: 10px auto;
+  width: 160px;
+  font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+  <header id="hero" style="background-color:#68a4eb"></header>
+   <div id="content" style="margin-top: -100px;float: left;">
+    <div class="wrapper">
+      <h1 style="margin-top: 30px;">Smart vision check</h1>      
+       <div id="jobs" class="clearfix">
+         <div id="jobs-list">
+          <ul>
+		  <li><a href="#home" class="active">Description</a></li>
+            <li><a href="#job1">Part 1-Understanding the Problem</a></li>
+            <li><a href="#job2">Part 2-Design Alternatives </a></li>
+            <li><a href="#job3">Part 3 -System Prototype and Evaluation Plan</a></li>
+            <li><a href="#job4">Part 4 -Evaluation </a></li>           
+          </ul>		 
+         </div>
+        
+        <div id="job-info">		
+		 <div id="home" class="jobitem displayed">
+		
+		   <h3>A Term Project In Human Computer Interaction</h3>
+		  <h4>Professor: Dr. Alexander Yemalyanov</h4>  
+			 <img style="margin-left:700px;margin-top:-180px;width:auto" src=""/>
+			  <h3>Team Members: Team#6</h3>
+			   <h4>Pinckney, Alecia</h4>
+			  <h4>Reddivari, Kalyan</h4>
+		</div>
+        <div id="job1" class="jobitem">			
+        <h3>Understanding the Problem</h3>
+		  <div class="page_collapsible" id="body-section1"><h4>Problem Overview</h4><span></span></div>			
+			<div class="container">
+              <div class="content">
+              <p>Over a billion people around the world are suffering uncorrected refractory errors and blurred eyesight requiring glasses. 
+Vision check or vision test process became very time taking with the doctors appointment and uncovered health insurance. 
+With the huge demand for cost efficient and time saving process need to be invented. 
+The Smart vision check,optical vending machine we design is capable of providing a detailed visual profile to your eye.
+not only it can save lot of time for people who need vision check,but also makes the whole process instantly.</p>
+              </div>
+			</div>
+		<div class="page_collapsible" ><h4>User Characteristics</h4><span></span></div>	
+            <div class="container">
+              <div class="content">
+			  <p>All users of this machine will presumably have a English reading and listening skills.The computer experience of our users will range from basic to advanced.The users could also have any level of education. The age of the users would range from older children to retirement age adults.  However, people suffering uncorrected refractory errors are the young adult demographic.  Geographically, our users can be located at the machine.Service assistance option is provided to the users who has disabilities on vision and who has no knowledge on the computer process.Service assistance can be request by the user based on clicking the help icon provided on the screen.</p>
+              </div>
+			</div>
+        <div class="page_collapsible" ><h4>Task Analysis:  Task Characteristics</h4><span></span></div>	
+            <div class="container">
+              <div class="content">
+			  <p>The user will use this process for vision check which will be profiled by vision experiments and tests by the machine with the actions performed by the user.User will be provided by the microphone with high quality headphones to follow the instrctions by the machine and respond to the machine instractions in the process</p>
+              </div>
+			</div> 
+         <div class="page_collapsible" ><h4>Task Analysis:  Task Environment</h4><span></span></div>	
+            <div class="container">
+              <div class="content">
+			  <p>Task environment is very perticuar pertaining to the machine.The user will have to present in person at the machine where it is located. There are many possible locations where this machine may be used due to advances in technology. Thus, the 
+environment where this task is performed is specific.The best suitable location for the machine is airport terminal lounges where users have enough wait time.To aware of the presence of the machine,there should be a guide process to attract the users to use the machine and to find it very clearly.
+The machine environment is a closed like telephone booth with no tansparent glass so that outside members cannot see inside users.The booth is intitially very lighted and clear to see the machine and it it will be very dark when starts the process.
+To give user experience more clear,Darker environment is made.The machine screen is wide large and have high resilution with large frames and icons to make user experience more feasible.The user will be instrsction by the voice commands and the touch screen options on the wide screen.The booth is made of no noise obsorption so that the user cannnot be effected by the outside noises.</p>
+              </div>
+			</div>   
+		 <div class="page_collapsible" ><h4>Task Analysis</h4><span></span></div>	
+            <div class="container">
+              <div class="content">
+			  <p>The following is a hierarchical task analysis of vision check and vending eye glasses.  It includes 4 steps process undergoes to complete the vision check process successfully.</p>
+			   <div class="tree-menu demo" id="tree-menu">
+            <ul>
+              <li><a href="#">1.Vision check</a>
+			   <ul>
+                  <li><a href="#">1.1 First time user tour</a><li>
+                  <li><a href="#">1.2 Eye positions placement</a></li>
+                  <li><a href="#">1.3 Machine instructions for vision test</a></li>                  
+                </ul></li>
+				  <li><a href="#">2.Payment process</a>
+                <ul>
+                  <li><a href="#">2.1 payment selection</a><li>
+                  <li><a href="#">2.2 payment processing and confirmation</a></li>
+                
+                  
+                </ul></li>
+               <li><a href="#">3.Vision profile</a>
+			   <ul>
+                  <li><a href="#">3.1 Check vision report</a><li>
+                  <li><a href="#">3.2 Print report</a></li>
+                  <li><a href="#">3.3 Email report</a></li>                  
+                </ul></li>
+
+            
+                  
+                </ul>
+              </li>
+              
+            </ul>
+          </div>
+		   <div id='chart_div'></div>  
+              </div>
+			</div>      
+		 <div class="page_collapsible" ><h4>An Analysis of the Existing Manual System</h4><span></span></div>	
+            <div class="container">
+              <div class="content">
+			  <p>One of the most effective ways to check your vision profile without any scanning technology is through the manual process. We should find a local eye doctor to set up the vision checkup.
+According to the observation there are many people who is continuing the manual process which they feel is interactive and satisfactory.
+However, setting up doctor’s appointment and waiting many days to actually consult the doctor is time consuming. A typical process of manual process of any individual involves: </p>
+<ul>
+<li> <p>1.) Request an appointment with local doctor.</li></p>
+<li><p> 2.) waiting for the confirmation and consultation for many days usually.</li><p>
+<li> <p>3.) setting up the pre-visit insurance formalities.</li><p>
+<li> <p>4.) waiting for confirmation from insurance company.</li><p>
+<li> <p>4.) Consulting the doctor.</li><p>
+<li> <p>5.) Requesting appointment for eyeglasses.</li><p>
+<li> <p>6.) visiting in person to select the eyeglasses according to the vision profile.</li><p>
+<li> <p>7.) Requesting the follow-up appointment and consulting.</li><p>
+</ul>
+			 
+              </div>
+			</div>   	
+		 <div class="page_collapsible" ><h4>Strong Points and Deficiencies of the Existing Manual System</h4><span></span></div>	
+            <div class="container">
+              <div class="content">
+			  <p>Automated vision check process is very quicker and time saving compared to the manual process. However, with the minor computer system errors in the automated process could raises
+the trustworthiness of the automated process. In the manual process, one can get the human interaction that could eliminates the doubts and nervousness of the patient where we can’t find in the automation process.
+Patient need to have a prior knowledge about computers and need to actively listen for the computer instructions. As some of the patients already have vision difficulties, it is difficult to see the screen and follow the computer instructions.
+As computer need to save all the vision profiles of many users, it is difficult to maintain the data and there are security concerns in various aspects. However, the manual process is time consuming it is very interactive. One can be clear of any doubts instantly
+and as discussing about their health issues regarding vision, they could get immense satisfaction.
+
+			  </p>
+              </div>
+			</div> 
+			 <div class="page_collapsible" ><h4>The Larger Social and Technical System in Which Our Design Will Intersect</h4><span></span></div>	
+            <div class="container">
+              <div class="content">
+			  <p>As the population getting increased rapidly worldwide, there is enormous insufficiency in the medical facilities. Automating a health checking process could save enormous resources and peoples time. Now a day working people are very busy with the everyday life and could have time to double on their health checkups and reports and intolerance of waiting time for doctor’s appointment, people are very interested about instant process. Automating the vision check could save a lot of time and very cost efficient. People who don’t have full coverage of vision insurance plans can also use the automatic vision check and save their time and money. The results are very accurate and instant, People can get sync with everyday life without major time consuming in their every day life.</p>
+              </div>
+			</div> 
+			 <div class="page_collapsible" ><h4>Initial List of Usability Criteria</h4><span></span></div>	
+            <div class="container">
+              <div class="content">
+			  <p>
+			 The usability of a product is affected not only by the features of the product itself, but also by the characteristics of the users, the tasks they are carrying out, and the technical, organizational and physical environment in which the product is used. One of the strongest advantages of our interface design is its simplicity, visibility and feasibility of the process. This product is intended for friendly conversation. The high-resolution touch screen monitor allows very clear and accurate on rendering the user interface. The user interface of this product contains a virtual keyboard which is visible on the screen, Menus, widgets, submit buttons in a very clear and contrast manner. The product is designed such a way to eliminate the hardware as much as possible. For example, introducing of virtual key board instead of keyboard hardware. The product is very feasible at the user interface such a way that user can choose the clear view of theme and contrast among many several themes. User interface has option to maximize the sizes of the interface in such a way that it allows the maximum zoom of 200%. The screen adjusts the interface based on the zoom level. The product interface is designed based on the design standards to avoid poor mappings and unwanted interface to avoid confusion to the user. Our user interface provides forward and backward options to the process to make user to skip some of the features and repeat the process if the user missed something on the process. The application provides a start on virtual tour for the first-time users to make sure the users will be knowledge enough before they start using the application.
+             </p>
+              </div>
+			</div> 
+			 <div class="page_collapsible" ><h4>Discussion of the Implications of What We Learned</h4><span></span></div>	
+            <div class="container">
+              <div class="content">
+			  <p>As we expected, nearly all of the people with different age ranges we surveyed going in person to the vision check center after waiting many days for appointment and consultation.They expressed their 
+				 condition is further worsen due to the time consuming for appointments and pre formalities of insurance corporations.All users expressed enthusiasm for the concept and possible prototype. 
+				 They were comfortable with the advanced user interface and understood the suite of possible functionality offered to them. 
+				 All users were able to follow the computer instructions and could easily go through the automated process.</p>
+			  </div>
+			</div> 
+			 
+        </div>
+        <div id="job2" class="jobitem">
+            <h3>Design Alternatives</h3>
+			<div class="page_collapsible" ><h4>Project Description</h4><span></span></div>			
+			<div class="container">
+              <div class="content">
+              <p>Smart vision check, optical vending machine is capable of not only providing a detailed visual profile your eye, but also vends the eyeglasses based on your vision profile. It can even detect the differences in how your eye sees during daylight and nighttime. It is loaded with powerful features that supports global standards in visual inspection. It also has digital image processing techniques that are in built for the facial scanning. It provides you a wide range of options to choose your type and style of eyeglasses, you can virtually choose your eyeglasses on the screen with your facial scanned image along with the best eyeglasses that suits to you.</p>
+              </div>
+			</div>
+			<div class="page_collapsible" ><h4>Requirement Summary</h4><span></span></div>			
+			<div class="container">
+              <div class="content">
+              <p>Since the chosen locations for the kiosk are airports the care should be taken that the location is easily found.
+				  1. Since some airports hold many business centers, the kiosk should be attractive and eye catchy that should easily be noticed by the customers.
+				  2. An associate may be there to help the needy.
+				  3. The effective explanation of the kiosk should be provided.
+				  4. The average time taken for operating the kiosk is 7-10 min.</p>
+			 </div>
+			</div>
+		   <div class="page_collapsible" ><h4>Design Space</h4><span></span></div>			
+			<div class="container">  
+              <div class="content">
+              <p>The design space depends on the size, shape and occupancy of the smart machine. The operating method for the smart check kiosk should be easy for the user. The kiosk should provide easy and powerful query to search in a single entry, which facilitates  users feel comfortable.</p>
+              </div>
+			</div>
+			<div class="page_collapsible" ><h4>Design Summary</h4><span></span></div>			
+			<div class="container">
+              <div class="content">
+              <p>We have decided to provide easy and simple interface to the user to make the process easier and faster.The interface is desined in compatible with kiosk standard size screens with touch enabled.The whole process consistes of 3 phases with an quick start guide to first time users.The phase 1 is informative and user understadable.Phase 2 is oreover consists of machine instructions.Phase 3 consists of ending process with payment precosseing information.Apart from all the phases a common help icon is present in every interactive screnn so that user can get assistance at any point of time and phase.
+			  </p>
+              </div>
+			</div>
+	
+			<div class="page_collapsible" ><h4>The Designs</h4><span></span></div>			
+			<div class="container">
+              <div class="content">
+              <div class="page_collapsible"  style="width:600px;margin-left:100px;" id="body-section1"><h4>Design 1</h4><span></span></div> 
+			  <div class="container">
+			  <div id="slider">
+				  <a href="#" class="control_next">></a>
+				  <a href="#" class="control_prev"><</a>
+				  <ul>
+				      <li><img style="height:400px;width:500px;" src="images/svc2.PNG"></li>
+					  <li><img style="height:400px;width:500px;" src="images/svc3.PNG"></li>
+					  <li><img style="height:400px;width:500px;" src="images/svc4.PNG"></li>
+					  <li><img style="height:400px;width:500px;" src="images/svc5.PNG"></li>
+					  <li><img style="height:400px;width:500px;" src="images/svc6.PNG"></li>
+					  <li><img style="height:400px;width:500px;" src="images/svc7.PNG"></li>
+					  <li><img style="height:400px;width:500px;" src="images/svc8.PNG"></li>
+					  <li><img style="height:400px;width:500px;" src="images/svc9.PNG"></li>					  
+					  <li><img style="height:400px;width:500px;" src="images/svc11.PNG"></li>					
+					  <li><img style="height:400px;width:500px;" src="images/svc13.PNG"></li>
+					  <li><img style="height:400px;width:500px;" src="images/svc14.PNG"></li>				   
+				  </ul>  
+				</div>
+			  
+              <div class="content">
+			  <h4>Design Overview:</h4>			 
+              <p>We have decided to provide quick tour about hoe to use the machine for first time users.When user select start  icon on the dashboard screen machine starts the actual process.
+			  user will be bring to the phase 1 which is giving personal information.After providing the personal information user will be navigated to phase which consistes of machine instrectios and hard ware interaction.
+			  After detailed vision check process,user can access the report options where user can choose print and exit or email and exit or continue to glasses vending phase.In the phase 3,user will have options to select the perticular frame type and match with his facial image.when the user confirm the item,will be taken to payment screen where user need to choose any payment options out of several and make payment.As soon as the transaction number and receipt genarated the machine vend the glasses. 
+			  .</p>
+              <h4>Illustration of the Design:</h4>  
+<p>This design consists of 3 mandatory phases.User need to go through the process accordingly from start to end.User donot have an exit or skip from one phase to another phase.The design is more interactive and takes longer times than expected time in the requirement.This time is very suitable for the users who has more time at the airpot terminals.
+		  .</p>			  
+              <h4>User Scenario:</h4> 
+			  <p> Mr John Doe forgot his glasses and he has 14 to 20 hours of flight journey and he would like to read some books.With out the proper glasses eading a book is difficult to him.He has morethan 3 hours to his departure,he is willing to go through the quick guide of the machine and willing to start the process.
+			  From the user’s perspective, this design is much more useful for those who have enough time at the airport. As this category of user has enough time, he/she can do some selection on available frames by selecting and changing the glasses untill it matches them.Once the user is happy about his selection he can buy the glasses of his choice and range.
+Advantages</p>
+			  <h4>Advantages:</h4>
+<p>Since the design has more information, It is good for those who willing to know more about the process.
+✓ The clear explanation and details of the vision check process is given.</p>			  
+			  <h4>Disadvantages:</h4>   
+			  <p> The user cant skip any one of the phases through out the process,the user gets confused while going all of them.
+✗Since the design will need many phases to go around, the transaction will take much more time to be done.
+✗ The design is complex internally.</p>
+<h4>Degree to Which Design Met Requirements:</h4>   
+			  <p> The design did not meet the requirements as expected before when designing started. The design seems to be precise, but not in practice.</p>
+
+			   </div>
+			</div>  
+		</div>
+		              <div class="page_collapsible"  style="width:600px;margin-left:100px;" id="body-section1"><h4>Design 2</h4><span></span></div> <div class="container">
+			  <div id="slider1">
+				  <a href="#" class="control_next1">></a>
+				  <a href="#" class="control_prev1"><</a>
+				  <ul>
+				      <li><img style="height:400px;width:500px;    margin-right: 200px;" src="images/svc2.PNG"></li>
+					  <li><img style="height:400px;width:500px;    margin-right: 200px;" src="images/svc21.PNG"></li>
+					  <li><img style="height:400px;width:500px;    margin-right: 200px;" src="images/svc3.PNG"></li>
+					  <li><img style="height:400px;width:500px;    margin-right: 200px;" src="images/svc4.PNG"></li>
+					  <li><img style="height:400px;width:500px;    margin-right: 200px;" src="images/svc5.PNG"></li>
+					  <li><img style="height:400px;width:500px;    margin-right: 200px;" src="images/svc6.PNG"></li>
+					  <li><img style="height:400px;width:500px;    margin-right: 200px;" src="images/svc7.PNG"></li>
+					  <li><img style="height:400px;width:500px;    margin-right: 200px;" src="images/svc8.PNG"></li>
+					  <li><img style="height:400px;width:500px;    margin-right: 200px;" src="images/svc9.PNG"></li>					  
+					  <li><img style="height:400px;width:500px;    margin-right: 200px;" src="images/svc11.PNG"></li>					
+					  <li><img style="height:400px;width:500px;    margin-right: 200px;" src="images/svc13.PNG"></li>
+					  <li><img style="height:400px;width:500px;    margin-right: 200px;" src="images/svc14.PNG"></li>				   
+				  </ul>  
+				</div>
+			  
+              <div class="content">
+			  <h4>Design Overview:</h4>			 
+              <p>We have decided to provide quick tour about hoe to use the machine for first time users.When user select start  icon on the dashboard screen machine starts the actual process.
+			 The process consistes of 3 phases,user can able to skip from one phase to another based on conditions.User can skip the quick tour if he is aware of the machine process,can skip the vision check if the user is not intereted in vision check but only he needs the glasses vending.user will be bring to the phase 1 which is giving personal information.After providing the personal information user will be navigated to phase which consistes of machine instrectios and hard ware interaction.
+			  After detailed vision check process,user can access the report options where user can choose print and exit or email and exit or continue to glasses vending phase.In the phase 3,user will have options to select the perticular frame type and match with his facial image.when the user confirm the item,will be taken to payment screen where user need to choose any payment options out of several and make payment.As soon as the transaction number and receipt genarated the machine vend the glasses. 
+			  .</p>
+              <h4>Illustration of the Design:</h4>  
+<p>This design consists of 3 mandatory phases.User can go through the process accordingly from start to end withiout skipping any phase if the user is first time.If the user is not firt time and not interested in vision check but only need glasses, can skop tp the phase 3. User  have an exit or skip option in every phase.The design is more interactive and takes shorter time than expected time in the requirement.This time is very suitable for the users who has more time at the airpot terminals.
+		  .</p>			  
+              <h4>User Scenario:</h4> 
+			  <p> Mr John Doe forgot his glasses and he has 14 to 20 hours of flight journey and he would like to read some books.With out the proper glasses eading a book is difficult to him.He has morethan 3 hours to his departure,he is willing to go through the quick guide of the machine and willing to start the process.
+			  From the user’s perspective, this design is useful for those who have enough time at the airport as well as users with shorter time.user can quickly select the frame and slight measurements and get the glasses vended quickly. As this design also fits to the users with shorter time.Once the user is happy about his selection he can buy the glasses of his choice and range.
+Advantages</p>
+			  <h4>Advantages:</h4>
+<p>Since the design is quicker for user to skip any phase at any time, It is good for those who are in a hurry or less time to take the whole process.
+✓ The clear options for selection of different phases that the user need to start is given.</p>			  
+			  <h4>Disadvantages:</h4>   
+			  <p> The user should have prior knowledge about the sight number and type of sight,some times users get struck to enter the technical measurements of the sight he/she has.
+</p>
+<h4>Degree to Which Design Met Requirements:</h4>   
+			  <p> The design exactly meets the requirements as expected before when designing started. The design seems to be precise, and in practice.</p>
+
+			 </div>
+			</div>
+		              <div class="page_collapsible"  style="width:600px;margin-left:100px;" id="body-section2"><h4>Design 3</h4><span></span></div> <div class="container">
+			  <div id="slider2">
+				  <a href="#" class="control_next2">></a>
+				  <a href="#" class="control_prev2"><</a>
+				  <ul>
+				    	<li><img style="height:400px;width:500px;    margin-right: 200px;" src="images/ehr.PNG"></li>					
+					  <li><img style="height:400px;width:500px;    margin-right: 200px;" src="images/ehr2.PNG"></li>				  
+					  <li><img style="height:400px;width:500px;    margin-right: 200px;" src="images/svc11.PNG"></li>					
+					  <li><img style="height:400px;width:500px;    margin-right: 200px;" src="images/svc13.PNG"></li>
+					  <li><img style="height:400px;width:500px;    margin-right: 200px;" src="images/svc14.PNG"></li>				   
+				  </ul>  
+				</div>
+			  
+              <div class="content">
+			  <h4>Design Overview:</h4>			 
+              <p>We have decided to provide a quick process for vending the glasses.When user select start  icon on the dashboard screen machine starts with "EHR" information.
+			 User need to provide the Electronic health record identification number so that system will retrive the health information about the user.
+			 The process is very simple.When ever user enters the EHR number,user will be bring to the glasses vending process which again consists of selecting the right frame.User donot need to provide the personal onformation as the system retrives all the needed information about user with the help of EHR.But user needs to confirm the authentication to accept the machine to retrive the information about the user.
+			  
+			  In the process,user will have options to select the perticular frame type and match with his facial image.when the user confirm the item,
+			  will be taken to payment screen where user need to choose any payment options out of several and make payment.As soon as the transaction number and receipt genarated the machine vend the glasses. 
+			  .</p>
+              <h4>Illustration of the Design:</h4>  
+<p>This design consists of 2 mandatory phases.User should go through the process accordingly from start to end withiout skipping any phase. user need not to enter any information unlike the phase 1 and phase 2 in the Design 1.System is able to retrive all the neccesary information about the user.
+This design is very suitable for the users who are in rush to get the glasses instantly the airpot terminals.
+		  </p>			  
+              <h4>User Scenario:</h4> 
+			  <p> Mr John Doe forgot his glasses and he has no time and needs the glasses instantly.Since he has very less time to his departure,he is not willing to go through the design 1 and and willing to start the process right away.
+			  From the user’s perspective, this design is useful for those who have not enough time at the airport and who is in a rush.
+			  user can quickly provide the EHR information and select the frame and slight measurements and get the glasses vended quickly.
+			  As this design also fits to the users with shorter time.Once the user is happy about his selection he can buy the glasses of his choice and range.
+</p>
+			  <h4>Advantages:</h4>
+<p>Since the design is quicker for user to skip any phase 1 and phase 2, It is good for those who are in a hurry or less time to take the whole process.
+✓ User just need to give tthe authentication access to retrive the information about him saves user more time.</p>			  
+			  <h4>Disadvantages:</h4>   
+			  <p> The user should have prior knowledge about what is EHR and where do he finds the number as not everyone remembers his EHR number and doesnot carry any document 
+			  related to EHR especially at the airports.
+</p>
+<h4>Degree to Which Design Met Requirements:</h4>   
+			  <p> The design exactly meets the requirements as expected before when designing started. The design seems to be precise, and in practice.</p>
+
+			 </div>
+			</div>
+			
+			</div>
+			 <div class="page_collapsible" ><h4>Conclusion</h4><span></span></div>			
+			<div class="container">
+              <div class="content">
+              <p>Since the design 2 supports all types of users,users which has more time can go through all the phases and users with less time can skip any phase at any time.So with some user interface  modifications, 
+Design 2 is very comfortable for all types of users.
+			  </p>
+              </div>
+			</div>
+			</div>
+	</div>
+ </div>
+          
+          <div id="job3" class="jobitem">
+            <h3>Under Development</h3>     
+          </div>
+
+          <div id="job4" class="jobitem">
+            <h3>Under Development</h3>     
+          </div>
+          
+          <div id="job5" class="jobitem">
+            <h3>Under Development</h3>     
+          </div>
+        </div>
+      </div>
+    </div>
+ </div>
+
+<script type="text/javascript">
+$(function(){
+  $jobslist = $('#jobs-list ul li a');
+  
+  $($jobslist).on('click', function(e){
+    e.preventDefault();
+    var newcontent = $(this).attr('href');
+
+    if(!$(this).hasClass('active')) {
+      $('#jobs-list ul li a.active').removeClass('active');
+	// $('#jobs-list ul li a.active').removeClass('activ');
+    }
+    $(this).addClass('active');
+	//$(this).addClass('activ');
+    
+    if(!$(newcontent).hasClass('displayed')) {
+      $('.jobitem.displayed').removeClass('displayed');
+      $(newcontent).addClass('displayed');
+    }
+  });
+});
+</script>
+</body>
+</html>
